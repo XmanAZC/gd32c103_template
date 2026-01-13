@@ -7,3 +7,7 @@
 [submodule "mcu_components"]
 	path = mcu_components
 	url = https://github.com/XmanAZC/mcu_components.git
+[submodule "rt-thread"]
+	path = rt-thread
+	url = https://github.com/RT-Thread/rt-thread.git
+	branch = ddf52e2
