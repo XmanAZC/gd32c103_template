@@ -26,7 +26,14 @@ SIZE = PREFIX + 'size'
 OBJDUMP = PREFIX + 'objdump'
 OBJCPY = PREFIX + 'objcopy'
 DEVICE = ' -mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -ffunction-sections -fdata-sections'
-CFLAGS = DEVICE + ' -Dgcc -g -O0'
+
+# 根据 BUILD_TYPE 环境变量选择编译选项
+BUILD_TYPE = os.getenv('BUILD_TYPE', 'debug')
+if BUILD_TYPE == 'release':
+    CFLAGS = DEVICE + ' -Dgcc -O2 -DNDEBUG'
+else:
+    CFLAGS = DEVICE + ' -Dgcc -g -O0 -DDEBUG'
+
 AFLAGS = ' -c' + DEVICE + ' -x assembler-with-cpp -Wa,-mimplicit-it=thumb '
 LFLAGS = DEVICE + f' -Wl,--gc-sections,-Map={TARGET}.map,-cref,-u,Reset_Handler -T link.ld.tmp'
 CPATH = ''
