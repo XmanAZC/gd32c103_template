@@ -1,6 +1,3 @@
-[submodule "rt-thread"]
-	path = rt-thread
-	url = https://github.com/XmanAZC/RT-Thread-simple.git
 [submodule "gd32_drivers"]
 	path = gd32_drivers
 	url = https://github.com/XmanAZC/gd32_drivers.git
